@@ -1,11 +1,8 @@
 import { Controller, Post, Req, Res } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
-// import { createReadStream, createWriteStream } from 'fs';
 import { join } from 'path';
 import { randomBytes } from 'crypto';
-// import { pipeline } from 'stream';
-// import { promisify } from 'util';
 import * as multer from 'multer';
 
 interface MulterRequest extends Request {
