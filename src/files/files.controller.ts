@@ -1,5 +1,11 @@
 import { Controller, Post, Req, Res } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+  ApiConsumes,
+  ApiBody,
+} from '@nestjs/swagger';
 import { Request, Response } from 'express';
 import { join } from 'path';
 import { randomBytes } from 'crypto';
@@ -14,13 +20,29 @@ interface MulterRequest extends Request {
 export class FilesController {
   @Post()
   @ApiOperation({ summary: 'Upload file' })
-  @ApiResponse({
-    status: 500,
-    description: 'An error occurred while uploading the file.',
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
   })
   @ApiResponse({
     status: 201,
     description: 'File has been uploaded',
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'No file provided',
+  })
+  @ApiResponse({
+    status: 500,
+    description: 'Upload failed',
   })
   async uploadFile(@Req() req: MulterRequest, @Res() res: Response) {
     const storage = multer.diskStorage({
@@ -33,8 +55,10 @@ export class FilesController {
         cb(null, uniqueName + file.originalname);
       },
     });
+
     // здесь после storage можно поставить опцию limits чтобы
     // обозначить ограничения на размер файлов
+    // без него - ограничения снимаются
     const upload = multer({ storage }).single('file');
 
     upload(req, res, async (err) => {
