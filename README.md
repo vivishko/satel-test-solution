@@ -8,11 +8,22 @@
 
 `Создать бекенд на NestJS`:
 
+![дока](https://docs.nestjs.com/)
+
 `Добавить Swager`:
+
+![ресурс](https://docs.nestjs.com/openapi/introduction#bootstrap)
 
 `Убрать CORS`:
 
+![ресурс](https://docs.nestjs.com/security/cors)
+
 `Добавить метод на загрузку файлов большой емкости`:
+
+![ресурс 1](https://metanit.com/web/nodejs/10.1.php)
+![ресурс 2](https://docs.nestjs.com/techniques/file-upload)
+![ресурс 3](https://github.com/nestjs/nest/tree/master/sample/29-file-upload)
+![ресурс 4](https://gabrieltanner.org/blog/nestjs-file-uploading-using-multer/)
 
 ## Инструкция по использованию:
 
