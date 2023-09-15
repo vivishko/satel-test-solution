@@ -4,6 +4,12 @@
 
 Создать бекенд на NestJS. Добавить Swager. Добавить метод на загрузку файлов большой емкости. Убрать CORS
 
+## Tech stack
+
+#### Backend: NestJS
+
+#### Batabases and other tools: Swager
+
 ## Решение
 
 `Создать бекенд на NestJS`:
